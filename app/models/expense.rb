@@ -3,7 +3,7 @@
 # Table name: expenses
 #
 #  id             :integer          not null, primary key
-#  congressman_id :integer
+#  deputy_id      :integer
 #  supplier       :string
 #  cnpj_cpf       :string
 #  document_id    :string
@@ -19,7 +19,7 @@
 #
 
 class Expense < ApplicationRecord
-  belongs_to :congressman
+  belongs_to :deputy
 
   def document_url
     "http://www.camara.gov.br/cota-parlamentar//documentos/publ/#{applicant_id}/#{year}/#{document_id}.pdf"

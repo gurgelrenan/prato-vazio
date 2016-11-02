@@ -10,22 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161102032947) do
+ActiveRecord::Schema.define(version: 20161102220822) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "congressmen", force: :cascade do |t|
-    t.string   "name"
+  create_table "deputies", force: :cascade do |t|
     t.string   "congressperson_id"
+    t.string   "congressperson_name"
     t.string   "state"
     t.string   "party"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
   end
 
   create_table "expenses", force: :cascade do |t|
-    t.integer  "congressman_id"
+    t.integer  "deputy_id"
     t.string   "supplier"
     t.string   "cnpj_cpf"
     t.string   "document_id"
@@ -38,8 +38,8 @@ ActiveRecord::Schema.define(version: 20161102032947) do
     t.string   "applicant_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
-    t.index ["congressman_id"], name: "index_expenses_on_congressman_id", using: :btree
+    t.index ["deputy_id"], name: "index_expenses_on_deputy_id", using: :btree
   end
 
-  add_foreign_key "expenses", "congressmen"
+  add_foreign_key "expenses", "deputies"
 end

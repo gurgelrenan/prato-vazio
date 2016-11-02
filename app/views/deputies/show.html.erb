@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Congressperson:</strong>
+  <%= @deputy.congressperson_id %>
+</p>
+
+<p>
+  <strong>Congressperson name:</strong>
+  <%= @deputy.congressperson_name %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @deputy.state %>
+</p>
+
+<p>
+  <strong>Party:</strong>
+  <%= @deputy.party %>
+</p>
+
+<h2>Despesas</h2>
+<fieldset>
+  <% @expenses.each do |expense| %>
+    <p>
+      <strong>Estabelecimento:</strong>
+      <%= expense.supplier %>
+    </p>
+    <p>
+      <strong>Valor:</strong>
+      R$ <%= expense.net_value %>
+    </p>
+    <p>
+      <strong>Nota:</strong>
+      <%= link_to "cupom", expense.document_url %>
+    </p>
+  <% end %>
+</fieldset>
+
+<%= link_to 'Back', deputies_path %>

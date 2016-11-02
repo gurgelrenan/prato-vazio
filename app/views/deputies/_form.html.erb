@@ -1,10 +1,10 @@
-<%= form_for(congressman) do |f| %>
-  <% if congressman.errors.any? %>
+<%= form_for(deputy) do |f| %>
+  <% if deputy.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(congressman.errors.count, "error") %> prohibited this congressman from being saved:</h2>
+      <h2><%= pluralize(deputy.errors.count, "error") %> prohibited this deputy from being saved:</h2>
 
       <ul>
-      <% congressman.errors.full_messages.each do |message| %>
+      <% deputy.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -12,13 +12,13 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+    <%= f.label :congressperson_id %>
+    <%= f.text_field :congressperson_id %>
   </div>
 
   <div class="field">
-    <%= f.label :congressperson_id %>
-    <%= f.text_field :congressperson_id %>
+    <%= f.label :congressperson_name %>
+    <%= f.text_field :congressperson_name %>
   </div>
 
   <div class="field">

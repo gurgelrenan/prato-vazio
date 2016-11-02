@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
-  resources :congressmen
-  root 'congressmen#index'
+  resources :deputies
+  root 'deputies#index'
 end
