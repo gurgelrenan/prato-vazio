@@ -53,6 +53,6 @@ class CongressmenController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def congressman_params
-      params.require(:congressman).permit(:name, :legacy_id, :state, :party)
+      params.require(:congressman).permit(:name, :congressperson_id, :state, :party)
     end
 end
