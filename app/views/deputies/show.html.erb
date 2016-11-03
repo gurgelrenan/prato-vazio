@@ -1,41 +1,48 @@
-<p id="notice"><%= notice %></p>
+<fieldset>
+  <p>
+    <strong>Nome:</strong>
+    <%= @deputy.congressperson_name %>
+  </p>
 
-<p>
-  <strong>Congressperson:</strong>
-  <%= @deputy.congressperson_id %>
-</p>
+  <p>
+    <strong>Partido:</strong>
+    <%= @deputy.party %>
+  </p>
 
-<p>
-  <strong>Congressperson name:</strong>
-  <%= @deputy.congressperson_name %>
-</p>
+  <p>
+    <strong>Página:</strong>
+    <%= link_to "perfil", "http://www.camara.leg.br/Internet/deputado/Dep_Detalhe.asp?id=#{@deputy.congressperson_id}" %>
+  </p>
 
-<p>
-  <strong>State:</strong>
-  <%= @deputy.state %>
-</p>
-
-<p>
-  <strong>Party:</strong>
-  <%= @deputy.party %>
-</p>
+  <p>
+    <strong>Maior Despesa:</strong>
+    <%= number_to_currency(@deputy.max_expense.net_value, unit: "R$ ", separator: ",", delimiter: ".") %>
+    <br>
+    <%= link_to "cupom", @deputy.max_expense.document_url %>
+  </p>
+</fieldset>
 
 <h2>Despesas</h2>
-<fieldset>
-  <% @expenses.each do |expense| %>
-    <p>
-      <strong>Estabelecimento:</strong>
-      <%= expense.supplier %>
-    </p>
-    <p>
-      <strong>Valor:</strong>
-      R$ <%= expense.net_value %>
-    </p>
-    <p>
-      <strong>Nota:</strong>
-      <%= link_to "cupom", expense.document_url %>
-    </p>
-  <% end %>
-</fieldset>
+
+<table class="striped">
+  <thead>
+    <tr>
+      <th>Data</th>
+      <th>Estabelecimento</th>
+      <th>Valor</th>
+      <th>Nota</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @expenses.each do |expense| %>
+      <tr>
+        <td><%= expense.issue_date.strftime("%d/%m/%Y") %></td>
+        <td><%= expense.supplier %></td>
+        <td><%= number_to_currency(expense.net_value, unit: "R$ ", separator: ",", delimiter: ".") %></td>
+        <td><%= link_to "cupom", expense.document_url %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
 <%= link_to 'Back', deputies_path %>

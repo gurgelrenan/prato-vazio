@@ -12,7 +12,7 @@ class DeputiesController < ApplicationController
 
   # GET /deputies/1
   def show
-    @expenses = @deputy.expenses.order(:month)
+    @expenses = @deputy.expenses.order(:issue_date)
   end
 
   # GET /deputies/new

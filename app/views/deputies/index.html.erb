@@ -1,30 +1,40 @@
-<p id="notice"><%= notice %></p>
+<div class="section no-pad-bot" id="index-banner">
+  <div class="container">
+    <br><br>
+    <h1 class="header center orange-text">Deputados</h1>
+    <div class="row center">
+      <h5 class="header col s12 light">Deputados cearenses e seus gastos entre janeiro de 2015 até julho de 2016.</h5>
+    </div>
+  </div>
+</div>
 
-<h1>Deputies</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Congressperson</th>
-      <th>Congressperson name</th>
-      <th>State</th>
-      <th>Party</th>
-      <th>Total Gasto</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="container">
+  <div class="row">
 
-  <tbody>
     <% @deputies.each do |deputy| %>
-      <tr>
-        <td><%= deputy.congressperson_id %></td>
-        <td><%= deputy.congressperson_name %></td>
-        <td><%= deputy.state %></td>
-        <td><%= deputy.party %></td>
-        <td><%= deputy.sum_value_count %></td>
-        <td><%= link_to 'Show', deputy %></td>
-        <td><%= link_to 'Destroy', deputy, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <div class="col s12 m6">
+        <div class="card horizontal blue-grey darken-1">
+          <div class="card-image">
+            <%= image_tag "http://www.camara.leg.br/internet/deputado/bandep/#{deputy.congressperson_id}.jpg" %>
+          </div>
+          <div class="card-content white-text">
+            <span class="card-title"><%= deputy.congressperson_name %></span>
+            <p>
+              <strong>Partido:</strong>
+              <%= deputy.party %>
+            </p>
+            <p>
+              <strong>Gastos Totais:</strong>
+              <%= number_to_currency(deputy.sum_value_count, unit: "R$ ", separator: ",", delimiter: ".") %>
+            </p>
+          </div>
+          <div class="card-action">
+            <%= link_to "Detalhar", deputy %>
+          </div>
+        </div>
+      </div>
     <% end %>
-  </tbody>
-</table>
+
+  </div>
+</div>

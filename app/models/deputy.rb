@@ -13,4 +13,8 @@
 
 class Deputy < ApplicationRecord
   has_many :expenses
+
+  def max_expense
+    expenses.order("net_value DESC").first
+  end
 end

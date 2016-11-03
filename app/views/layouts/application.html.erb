@@ -9,6 +9,37 @@
   </head>
 
   <body>
-    <%= yield %>
+    <nav class="light-blue lighten-1" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo">Prato Vazio</a>
+      <ul class="right hide-on-med-and-down">
+        <li><%= link_to "Deputados", deputies_path %></li>
+      </ul>
+      <ul id="nav-mobile" class="side-nav">
+        <li><%= link_to "Deputados", deputies_path %></li>
+      </ul>
+      <a href="#" data-activates="nav-mobile" class="button-collapse">
+        <i class="material-icons">menu</i>
+      </a>
+    </div>
+  </nav>
+
+  <%= yield %>
+
+  <footer class="page-footer orange">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Prato Vazio</h5>
+          <p class="grey-text text-lighten-4">Explicação da ideia...</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+      Made by <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+      </div>
+    </div>
+  </footer>
+
   </body>
 </html>
